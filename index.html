@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme:dark)">
-<meta name="description" content="AI 分析與同學標註之逐欄一致率、同學間對照基準、裁決紀錄與分級結果。">
+<meta name="description" content="AI 分析與同學標註之逐欄一致率、同學間對照基準與分級結果。">
 <title>信效度驗證結果｜磨課師 AI 課程盤點</title>
 <style>
 *,*::before,*::after{box-sizing:border-box}
@@ -131,7 +131,7 @@ AI_vs_同學_比對結果.json、apply_arbitration.py。本頁數字由程式自
 <div class="stat"><div class="n">59</div><div class="l">可比對課程</div></div>
 <div class="stat"><div class="n">118</div><div class="l">真人標註筆數</div></div>
 <div class="stat"><div class="n">15</div><div class="l">參與標註同學</div></div>
-<div class="stat"><div class="n">16</div><div class="l">主持人裁決課數</div></div>
+<div class="stat"><div class="n">15</div><div class="l">比較欄位數</div></div>
 </div>
 
 <div class="sec"><div class="sec-h">驗證方式</div><div class="card">
@@ -140,10 +140,10 @@ AI_vs_同學_比對結果.json、apply_arbitration.py。本頁數字由程式自
 類別欄位（能力標籤、難易度、課程節奏）採<b>判定完全相同</b>;
 數值欄位（五面向 + 推薦度）採<b>差 1 級以內視為一致</b>。
 不加權、不校正,每個數字都能回到個別課程逐筆核對。</p>
-<div class="note"><b>為什麼不報 Cohen's Kappa 與 ICC</b>　此二係數在判定分布極度偏態時會嚴重低估 ——
-例如能力標籤 C 幾乎每門課都有,雙方都判「有」反而算得很低,對本資料不具鑑別力。
-比對程式仍完整計算 22 項統計係數並保留於
-<code>AI_vs_同學_比對結果.json</code> 供備查,惟不作為對外判讀依據。</div>
+<div class="note"><b>逐項比較,不作額外加權</b>　每一門課、每一個欄位都獨立判定是否一致,
+再以「判定相同之課程數 ÷ 比對課程數」求得該欄位之一致率。
+每個百分比都能在<a href="https://clchrf.github.io/moocs-validity-detail/" rel="noopener">逐課比對明細</a>
+逐課回推。</div>
 <div class="note warn"><b>一致率的限制</b>　未扣除偶然一致之成分,於判定分布極度集中之欄位
 會有偏高之虞。爰於下方併陳<b>兩位同學彼此之間的一致率</b>作為判讀基準。</div>
 </div></div>
@@ -170,21 +170,6 @@ AI_vs_同學_比對結果.json、apply_arbitration.py。本頁數字由程式自
 <th class="num">同學（n=118）</th></tr></thead><tbody><tr><td>1 分</td><td class="num">0</td><td class="num">3</td></tr><tr><td>2 分</td><td class="num">4</td><td class="num">14</td></tr><tr><td>3 分</td><td class="num">44</td><td class="num">38</td></tr><tr><td>4 分</td><td class="num">11</td><td class="num">39</td></tr><tr><td>5 分</td><td class="num">0</td><td class="num">24</td></tr></tbody></table></div>
 <div class="note">AI 於推薦度、趣味度、結構清晰度三項<b>從未給過 5 分</b>。
 9 門 A+ 級課程中,無任一門係由 AI 給予最高分而入選 —— 規準中之防給分膨脹規定確實有效。</div></div>
-
-<div class="sec"><div class="sec-h">分歧處理與主持人裁決</div><div class="card">
-<p style="margin:0 0 8px;font-size:14px;color:var(--label2)">
-裁決採<b>分層處理</b>:僅影響分類結果之核心分歧進入主持人裁決 ——
-能力標籤集合差 2 項以上,或課程節奏差 2 級。其餘差異自動採認並留存紀錄。</p>
-<div class="stats" style="margin:10px 0 0">
-<div class="stat"><div class="n">16</div><div class="l">實際裁決課數</div></div>
-<div class="stat"><div class="n">18</div><div class="l">裁決筆數</div></div>
-<div class="stat"><div class="n">14</div><div class="l">能力標籤</div></div>
-<div class="stat"><div class="n">4</div><div class="l">課程節奏</div></div>
-</div>
-<div class="note">每筆裁決均有書面理由。準則:同學佐證不夠具體者採 AI 判斷;
-佐證具體且扣題者整合雙方;課程節奏採 AI 與兩位同學之三票多數決。
-全部 59 門課之核心分歧均已裁決完畢,分級已定案。</div>
-</div></div>
 
 <div class="sec"><div class="sec-h">最終分級結果</div>
 <div class="stats">
